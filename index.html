@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Study Planner</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#dashboard">Skip to main content</a>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+<div class="container">
+<a class="navbar-brand fw-bold" href="#">📚 Study Planner</a>
+<button class="navbar-toggler" type="button" aria-label="Toggle navigation" aria-controls="nav" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link" href="#subjects">Subjects</a></li>
+<li class="nav-item"><a class="nav-link" href="#tasks">Tasks</a></li>
+<li class="nav-item"><a class="nav-link" href="#progress">Progress</a></li>
+<li class="nav-item"><a class="nav-link" href="#smart-priority">Smart Priorities</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+</ul>
+</div></div></nav>
+
+<section id="dashboard" class="hero">
+<div class="container py-5">
+<div class="row align-items-center g-4">
+<div class="col-lg-7">
+<span class="badge text-bg-primary mb-3">FINAL PROJECT · MODULE 5</span>
+<h1 class="display-5 fw-bold">Plan your studies. Stay organized.</h1>
+<p class="lead text-secondary">A responsive study planner for managing subjects and building better study habits.</p>
+<a href="#subjects" class="btn btn-primary btn-lg">Manage Subjects</a>
+</div>
+<div class="col-lg-5"><div class="hero-card shadow-sm text-center">
+<div class="text-secondary">Subjects Added</div><div id="heroCount" class="display-3 fw-bold">0</div>
+</div></div>
+</div></div></section>
+
+<section class="container py-5">
+<div class="row g-3">
+<div class="col-md-4"><div class="stat"><span>📖</span><div><b id="count">0</b><small>Total Subjects</small></div></div></div>
+<div class="col-md-4"><div class="stat"><span>🎯</span><div><b>Module 5</b><small>Current Progress</small></div></div></div>
+<div class="col-md-4"><div class="stat"><span>💾</span><div><b>LocalStorage</b><small>Data Saved</small></div></div></div>
+</div></section>
+
+<section id="subjects" class="container pb-5">
+<div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+<div><h2 class="fw-bold">My Subjects</h2><p class="text-secondary">Add, view, edit and delete your study subjects.</p></div>
+<button class="btn btn-primary" id="addBtn">+ Add Subject</button>
+</div>
+<div id="empty" class="empty text-center py-5"><div class="display-5">📚</div><h5>No subjects yet</h5><p class="text-secondary">Add your first subject.</p></div>
+<div id="grid" class="row g-4"></div>
+</section>
+
+
+<section id="tasks" class="container pb-5">
+<div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+<div><h2 class="fw-bold">My Study Tasks</h2><p class="text-secondary">Add tasks, set deadlines and keep track of your study work.</p></div>
+<button class="btn btn-primary" id="addTaskBtn">+ Add Task</button>
+</div>
+
+<div class="row g-3 mb-4">
+<div class="col-md-4"><div class="task-stat"><span>📝</span><div><b id="taskCount">0</b><small>Total Tasks</small></div></div></div>
+<div class="col-md-4"><div class="task-stat"><span>⏳</span><div><b id="pendingCount">0</b><small>Pending</small></div></div></div>
+<div class="col-md-4"><div class="task-stat"><span>✅</span><div><b id="completedCount">0</b><small>Completed</small></div></div></div>
+</div>
+
+<div class="d-flex gap-2 flex-wrap mb-3">
+<button class="btn btn-sm btn-primary task-filter active" data-filter="all">All</button>
+<button class="btn btn-sm btn-outline-primary task-filter" data-filter="pending">Pending</button>
+<button class="btn btn-sm btn-outline-primary task-filter" data-filter="completed">Completed</button>
+</div>
+
+<div id="taskEmpty" class="empty text-center py-5">
+<div class="display-5">📝</div><h5>No tasks yet</h5><p class="text-secondary">Add your first study task.</p>
+</div>
+<div id="taskGrid" class="row g-4"></div>
+</section>
+
+
+<section id="progress" class="container pb-5">
+  <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+    <div><span class="badge text-bg-primary mb-2">Module 3</span><h2 class="fw-bold">Progress Dashboard</h2><p class="text-secondary">Track completion and see how each subject is progressing.</p></div>
+    <div class="progress-overview-label align-self-md-center">Live overview from your saved tasks</div>
+  </div>
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3"><div class="progress-stat"><span>📝</span><div><b id="m3Total">0</b><small>Total Tasks</small></div></div></div>
+    <div class="col-6 col-lg-3"><div class="progress-stat"><span>✅</span><div><b id="m3Completed">0</b><small>Completed</small></div></div></div>
+    <div class="col-6 col-lg-3"><div class="progress-stat"><span>⏳</span><div><b id="m3Pending">0</b><small>Pending</small></div></div></div>
+    <div class="col-6 col-lg-3"><div class="progress-stat"><span>📈</span><div><b><span id="m3Percent">0</span>%</b><small>Overall Progress</small><div class="progress mt-2"><div class="progress-bar" id="m3ProgressBar" style="width:0%"></div></div></div></div></div>
+  </div>
+  <div class="row g-4 mb-4">
+    <div class="col-lg-5"><article class="progress-panel h-100">
+      <h4 class="fw-bold">Task Completion</h4><p class="text-secondary small">Completed vs pending tasks</p>
+      <div class="m3-chart-wrap"><canvas id="m3TaskChart" role="img" aria-label="Doughnut chart comparing completed and pending tasks"></canvas></div>
+      <div class="m3-chart-legend"><span>🟣 Completed: <b id="m3ChartDone">0</b></span><span>🟠 Pending: <b id="m3ChartPending">0</b></span></div>
+    </article></div>
+    <div class="col-lg-7"><article class="progress-panel h-100">
+      <div class="d-flex justify-content-between gap-2 flex-wrap"><div><h4 class="fw-bold">Subject-wise Progress</h4><p class="text-secondary small">Completion percentage for each subject</p></div><span class="badge rounded-pill text-bg-light align-self-start" id="m3SubjectCount">0 subjects</span></div>
+      <div id="m3SubjectProgress"><div class="text-secondary small py-4 text-center">Add subjects and tasks to see progress.</div></div>
+    </article></div>
+  </div>
+  <article class="progress-panel">
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3"><div><h4 class="fw-bold">Task Progress List</h4><p class="text-secondary small mb-0">Your latest tasks, deadlines and status</p></div>
+      <select id="m3TaskFilter" class="form-select form-select-sm" style="max-width:180px" aria-label="Filter progress tasks"><option value="all">All tasks</option><option value="pending">Pending</option><option value="completed">Completed</option></select>
+    </div>
+    <div class="table-responsive"><table class="table align-middle mb-0 m3-table"><thead><tr><th>Task</th><th>Subject</th><th>Deadline</th><th>Status</th></tr></thead><tbody id="m3TaskRows"><tr><td colspan="4" class="text-center text-secondary py-4">No tasks yet.</td></tr></tbody></table></div>
+  </article>
+</section>
+
+
+<section id="smart-priority" class="container pb-5">
+  <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+    <div>
+      <span class="badge text-bg-primary mb-2">Module 4</span>
+      <h2 class="fw-bold">Smart Study Priorities</h2>
+      <p class="text-secondary">Find subjects that need attention, search tasks, filter results, and check upcoming deadlines.</p>
+    </div>
+    <div class="priority-summary align-self-md-center"><span aria-hidden="true">💡</span> Recommendations update automatically</div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3"><div class="priority-stat"><span>🎯</span><div><b id="m4PrioritySubjects">0</b><small>Subjects to focus on</small></div></div></div>
+    <div class="col-6 col-lg-3"><div class="priority-stat"><span>⏳</span><div><b id="m4PendingTasks">0</b><small>Pending tasks</small></div></div></div>
+    <div class="col-6 col-lg-3"><div class="priority-stat"><span>📅</span><div><b id="m4UpcomingTasks">0</b><small>Due in next 7 days</small></div></div></div>
+    <div class="col-6 col-lg-3"><div class="priority-stat"><span>⚠️</span><div><b id="m4OverdueTasks">0</b><small>Overdue tasks</small></div></div></div>
+  </div>
+
+  <article class="priority-panel mb-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3">
+      <div><h4 class="fw-bold mb-1">Recommended Study Priorities</h4><p class="text-secondary small mb-0">Subjects with more pending tasks appear first.</p></div>
+      <span class="badge text-bg-light align-self-start">Smart recommendations</span>
+    </div>
+    <div id="m4Recommendations" class="row g-3">
+      <div class="col-12 text-center text-secondary py-4">Add subjects and pending tasks to get recommendations.</div>
+    </div>
+  </article>
+
+  <article class="priority-panel mb-4">
+    <div class="mb-3"><h4 class="fw-bold mb-1">Search & Filter Tasks</h4><p class="text-secondary small mb-0">Search by task or subject name, then narrow the results.</p></div>
+    <div class="row g-2 mb-3">
+      <div class="col-md-5"><label for="m4Search" class="form-label">Search</label><input id="m4Search" class="form-control" type="search" placeholder="Search task or subject..." autocomplete="off"></div>
+      <div class="col-md-3"><label for="m4Status" class="form-label">Status</label><select id="m4Status" class="form-select"><option value="all">All statuses</option><option value="pending">Pending</option><option value="completed">Completed</option></select></div>
+      <div class="col-md-4"><label for="m4Subject" class="form-label">Subject</label><select id="m4Subject" class="form-select"><option value="all">All subjects</option></select></div>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0 m3-table">
+        <thead><tr><th>Task</th><th>Subject</th><th>Deadline</th><th>Status</th><th>Priority</th></tr></thead>
+        <tbody id="m4TaskRows"><tr><td colspan="5" class="text-center text-secondary py-4">No tasks yet.</td></tr></tbody>
+      </table>
+    </div>
+    <p id="m4ResultCount" class="text-secondary small mt-3 mb-0" aria-live="polite">Showing 0 tasks</p>
+  </article>
+
+  <article class="priority-panel">
+    <div class="mb-3"><h4 class="fw-bold mb-1">Upcoming Deadlines</h4><p class="text-secondary small mb-0">Pending tasks due today or within the next 7 days, ordered by deadline.</p></div>
+    <div id="m4UpcomingList" class="row g-3"><div class="col-12 text-center text-secondary py-4">No upcoming deadlines.</div></div>
+  </article>
+</section>
+
+<section id="about" class="container pb-5"><div class="about p-4">
+<h3>About this project</h3><p class="text-secondary mb-0">Personal Study Planner is a project for Students to plan their study effectively.</p>
+</div></section>
+
+<footer class="border-top py-4 text-center text-secondary small">© 2026 Study Planner. All rights reserved.</footer>
+
+<div class="modal fade" id="modal"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+<form id="form"><div class="modal-header"><h5 id="modalTitle">Add Subject</h5><button type="button" class="btn-close" aria-label="Close subject form" data-bs-dismiss="modal"></button></div>
+<div class="modal-body">
+<input type="hidden" id="id">
+<label class="form-label" for="name">Subject Name</label><input id="name" class="form-control mb-3" required placeholder="e.g. Web Development">
+<label class="form-label" for="code">Subject Code</label><input id="code" class="form-control mb-3" placeholder="e.g. WD-101">
+<label class="form-label" for="color">Subject Color</label><input id="color" type="color" class="form-control form-control-color mb-3" value="#0d6efd">
+<label class="form-label" for="notes">Notes</label><textarea id="notes" class="form-control" rows="3" placeholder="Optional notes"></textarea>
+</div><div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary">Save Subject</button></div>
+</form></div></div></div>
+
+
+<div class="modal fade" id="taskModal"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+<form id="taskForm"><div class="modal-header"><h5 id="taskModalTitle">Add Study Task</h5><button type="button" class="btn-close" aria-label="Close task form" data-bs-dismiss="modal"></button></div>
+<div class="modal-body">
+<input type="hidden" id="taskId">
+<label class="form-label" for="taskTitle">Task Title</label><input id="taskTitle" class="form-control mb-3" required placeholder="e.g. Complete JavaScript assignment">
+<label class="form-label" for="taskSubject">Subject</label><select id="taskSubject" class="form-select mb-3" required></select>
+<label class="form-label" for="taskDeadline">Deadline</label><input id="taskDeadline" type="date" class="form-control mb-3" required>
+<label class="form-label" for="taskStatus">Status</label><select id="taskStatus" class="form-select"><option value="pending">Pending</option><option value="completed">Completed</option></select>
+</div><div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary">Save Task</button></div>
+</form></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="js/app.js"></script>
+</body></html>
